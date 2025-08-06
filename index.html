@@ -19,7 +19,7 @@
             align-items: center; 
             text-align: center; 
             padding: 0 20px;
-            background: linear-gradient(135deg, #ff0040 0%, #dc143c 50%, #8b0000 100%);
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 30%, #16213e 70%, #0f3460 100%);
             position: relative;
             overflow: hidden;
         }
@@ -31,7 +31,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.3);
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(147, 51, 234, 0.15) 0%, transparent 50%);
             z-index: 1;
         }
         
@@ -46,33 +48,46 @@
             font-size: clamp(2.5rem, 8vw, 4.5rem); 
             margin-bottom: 2rem; 
             font-weight: 900;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            background: linear-gradient(135deg, #60a5fa, #a78bfa, #60a5fa);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease-in-out infinite;
             line-height: 1.1;
+            text-shadow: 0 0 40px rgba(96, 165, 250, 0.3);
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
         
         .subtitle { 
             font-size: clamp(1.1rem, 4vw, 1.8rem); 
             margin-bottom: 3rem; 
-            opacity: 0.95; 
+            opacity: 0.9; 
             line-height: 1.6;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            color: #e2e8f0;
         }
         
         .stats {
-            background: rgba(255,255,255,0.1);
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(20px);
             padding: 2.5rem;
             border-radius: 20px;
             margin: 2rem 0;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
         
         .stats h3 {
             font-size: 1.8rem;
             margin-bottom: 2rem;
-            color: #ffd700;
+            color: #60a5fa;
         }
         
         .stat-grid {
@@ -89,20 +104,24 @@
         .stat-number {
             font-size: 3rem;
             font-weight: 900;
-            color: #ffd700;
+            background: linear-gradient(135deg, #10b981, #06d6a0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             display: block;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
         }
         
         .stat-text {
             font-size: 1rem;
-            opacity: 0.9;
+            opacity: 0.8;
             margin-top: 0.5rem;
+            color: #cbd5e1;
         }
         
         .cta {
-            background: linear-gradient(45deg, #ffd700, #ffaa00);
-            color: #000;
+            background: linear-gradient(135deg, #10b981, #059669, #047857);
+            color: #ffffff;
             padding: 20px 40px;
             border-radius: 50px;
             text-decoration: none;
@@ -113,17 +132,34 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta:hover::before {
+            left: 100%;
         }
         
         .cta:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.6);
+            box-shadow: 0 12px 35px rgba(16, 185, 129, 0.5);
         }
         
         .portfolio {
             padding: 6rem 0;
-            background: #111;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
         
         .portfolio h2 {
@@ -131,25 +167,27 @@
             margin-bottom: 4rem;
             font-size: clamp(2rem, 6vw, 3.5rem);
             font-weight: 900;
+            color: #f1f5f9;
         }
         
         .project {
-            background: rgba(255,255,255,0.05);
+            background: rgba(30, 41, 59, 0.3);
+            backdrop-filter: blur(15px);
             margin: 2.5rem 0;
             padding: 3rem;
             border-radius: 20px;
-            border: 1px solid rgba(255, 0, 64, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.2);
             transition: all 0.3s ease;
         }
         
         .project:hover {
             transform: translateY(-5px);
-            border-color: rgba(255, 0, 64, 0.4);
-            box-shadow: 0 15px 40px rgba(255, 0, 64, 0.2);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.1);
         }
         
         .project h3 {
-            color: #ff6b6b;
+            color: #60a5fa;
             margin-bottom: 1.5rem;
             font-size: 1.8rem;
             font-weight: 700;
@@ -160,6 +198,7 @@
             opacity: 0.9;
             line-height: 1.7;
             font-size: 1.1rem;
+            color: #e2e8f0;
         }
         
         .project-stats {
@@ -168,8 +207,9 @@
             gap: 1rem;
             margin: 1.5rem 0;
             padding: 1.5rem;
-            background: rgba(0,0,0,0.3);
+            background: rgba(15, 23, 42, 0.5);
             border-radius: 10px;
+            border: 1px solid rgba(59, 130, 246, 0.1);
         }
         
         .project-stat {
@@ -179,17 +219,18 @@
         .project-stat-number {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #ffd700;
+            color: #10b981;
             display: block;
         }
         
         .project-stat-text {
             font-size: 0.9rem;
             opacity: 0.8;
+            color: #cbd5e1;
         }
         
         .project-link {
-            color: #ffd700;
+            color: #10b981;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
@@ -200,29 +241,32 @@
         }
         
         .project-link:hover {
-            color: #ffaa00;
+            color: #06d6a0;
         }
         
         .contact {
             padding: 5rem 0;
-            background: linear-gradient(135deg, #8b0000, #dc143c);
+            background: linear-gradient(135deg, #1e293b, #334155);
             text-align: center;
         }
         
         .contact h2 {
             font-size: 2.5rem;
             margin-bottom: 2rem;
+            color: #f1f5f9;
         }
         
         .contact p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
             opacity: 0.9;
+            color: #e2e8f0;
         }
         
         .contact-info {
             font-size: 1.1rem;
             opacity: 0.8;
+            color: #cbd5e1;
         }
         
         @media (max-width: 768px) {
