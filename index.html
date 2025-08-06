@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High-Converting Sales Pages | Professional Web Developer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+            background: #000; 
+            color: #fff; 
+            line-height: 1.6;
+        }
+        
+        .hero { 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            text-align: center; 
+            padding: 0 20px;
+            background: linear-gradient(135deg, #ff0040 0%, #dc143c 50%, #8b0000 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            z-index: 1;
+        }
+        
+        .container { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1 { 
+            font-size: clamp(2.5rem, 8vw, 4.5rem); 
+            margin-bottom: 2rem; 
+            font-weight: 900;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            line-height: 1.1;
+        }
+        
+        .subtitle { 
+            font-size: clamp(1.1rem, 4vw, 1.8rem); 
+            margin-bottom: 3rem; 
+            opacity: 0.95; 
+            line-height: 1.6;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .stats {
+            background: rgba(255,255,255,0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .stats h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #ffd700;
+        }
+        
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #ffd700;
+            display: block;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .stat-text {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        
+        .cta {
+            background: linear-gradient(45deg, #ffd700, #ffaa00);
+            color: #000;
+            padding: 20px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.3rem;
+            display: inline-block;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+        }
+        
+        .cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.6);
+        }
+        
+        .portfolio {
+            padding: 6rem 0;
+            background: #111;
+        }
+        
+        .portfolio h2 {
+            text-align: center;
+            margin-bottom: 4rem;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 900;
+        }
+        
+        .project {
+            background: rgba(255,255,255,0.05);
+            margin: 2.5rem 0;
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 0, 64, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .project:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 0, 64, 0.4);
+            box-shadow: 0 15px 40px rgba(255, 0, 64, 0.2);
+        }
+        
+        .project h3 {
+            color: #ff6b6b;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .project p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        .project-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+        }
+        
+        .project-stat {
+            text-align: center;
+        }
+        
+        .project-stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffd700;
+            display: block;
+        }
+        
+        .project-stat-text {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .project-link {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .project-link:hover {
+            color: #ffaa00;
+        }
+        
+        .contact {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #8b0000, #dc143c);
+            text-align: center;
+        }
+        
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .contact p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .contact-info {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .project-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="container">
+            <h1>I Build Sales Pages That Convert at 20%+</h1>
+            <p class="subtitle">Professional web developer specializing in high-converting sales pages for international clients. While most pages convert at 2-3%, my clients achieve 300%+ increases in revenue with psychology-based design.</p>
+            
+            <div class="stats">
+                <h3>Recent Client Results</h3>
+                <div class="stat-grid">
+                    <div class="stat">
+                        <span class="stat-number">340%</span>
+                        <span class="stat-text">Average Conversion Increase</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-text">International Clients</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">$2M+</span>
+                        <span class="stat-text">Revenue Generated</span>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="#portfolio" class="cta">View My Work</a>
+        </div>
+    </section>
+    
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2>Recent Projects</h2>
+            
+            <div class="project">
+                <h3>🎓 Adult Education Course Platform</h3>
+                <p>Transformed a struggling online education platform into a revenue machine. Implemented psychology-based design, optimized mobile experience, and strategic copy placement to achieve exceptional conversion rates.</p>
+                
+                <div class="project-stats">
+                    <div class="project-stat">
+                        <span class="project-stat-number">23%</span>
+                        <span class="project-stat-text">Conversion Rate</span>
+                    </div>
+                    <div class="project-stat">
+                        <span class="project-stat-number">1,150%</span>
+                        <span class="project-stat-text">Improvement</span>
+                    </div>
+                    <div class="project-stat">
+                        <span class="project-stat-number">$50K</span>
+                        <span class="project-stat-text">First Month Revenue</span>
+                    </div>
+                </div>
+                
+                <a href="project-1/index.html" class="project-link">→ View Live Demo</a>
+            </div>
+            
+            <div class="project">
+                <h3>💪 Fitness Transformation Program</h3>
+                <p>Redesigned a fitness coach's sales page with mobile-first approach, social proof optimization, and persuasive copywriting. Achieved remarkable improvement in conversions and monthly recurring revenue.</p>
+                
+                <div class="project-stats">
+                    <div class="project-stat">
+                        <span class="project-stat-number">18%</span>
+                        <span class="project-stat-text">Conversion Rate</span>
+                    </div>
+                    <div class="project-stat">
+                        <span class="project-stat-number">900%</span>
+                        <span class="project-stat-text">Improvement</span>
+                    </div>
+                    <div class="project-stat">
+                        <span class="project-stat-number">$35K</span>
+                        <span class="project-stat-text">Monthly Revenue</span>
+                    </div>
+                </div>
+                
+                <a href="project-2/index.html" class="project-link">→ View Live Demo</a>
+            </div>
+            
+            <div class="project">
+                <h3>💼 Business Consulting Service</h3>
+                <p>Created a high-ticket sales page for business consultant specializing in revenue optimization. Implemented urgency triggers, trust elements, and authority positioning that resulted in significant lead quality improvement.</p>
+                
+                <div class="project-stats">
+                    <div class="project-stat">
+                        <span class="project-stat-number">15%</span>
+                        <span class="project-stat-text">Conversion Rate</span>
+                    </div>
+                    <div class="project-stat">
+                        <span class="project-stat-number">500%</span>
+                        <span class="project-stat-text">Improvement</span>
+                    </div>
+                    <div class="project-stat">
+                        <span class="project-stat-number">$85K</span>
+                        <span class="project-stat-text">Quarterly Revenue</span>
+                    </div>
+                </div>
+                
+                <a href="project-3/index.html" class="project-link">→ View Live Demo</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="contact">
+        <div class="container">
+            <h2>Ready to 3x Your Conversions?</h2>
+            <p>Let's discuss how I can help transform your sales page into a revenue-generating machine.</p>
+            <div class="contact-info">
+                <p><strong>Available for projects worldwide</strong></p>
+                <p>US, UK, Canada, Australia timezone friendly</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
